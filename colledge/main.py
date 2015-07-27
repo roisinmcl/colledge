@@ -24,23 +24,30 @@ env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 #Login
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
+        template = env.get_template('login.html')
         self.response.write('Hello world!')
 
 #Homepage
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
+        template = env.get_template('home.html')
         self.response.write('This is the home page')
 
 #Profile
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
+        template = env.get_template('profile.html')
         self.response.write('This is a profile page')
 
 #College
 class CollegeHandler(webapp2.RequestHandler):
     def get(self):
+        template = env.get_template('college.html')
         self.response.write('This is a college')
 
 app = webapp2.WSGIApplication([
-    ('/', LoginHandler)
+    ('/', LoginHandler),
+    ('/home', HomeHandler),
+    ('/profile', ProfileHandler),
+    ('/college', CollegeHandler)
 ], debug=True)
