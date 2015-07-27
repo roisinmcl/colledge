@@ -1,10 +1,18 @@
 body {
   font-family:'Wellfleet';
-  background-image: url("cbf52adea9c440199cd548fecd886bc5.jpg");
+  background-image: url("http://cdn.desktopwallpapers4.me/wallpapers/abstract/1920x1080/1/3232-colorful-circles-1920x1080-abstract-wallpaper.jpg");
   background-repeat:no-repeat;
   background-size:cover;
 }
 
 h1 {font-family:'Wellfleet';
+    position: absolute;
+    top: 50%;
+    left: 40%;
 
+}
+
+p {
+  font-size: 75px;
+  color: green;
 }
