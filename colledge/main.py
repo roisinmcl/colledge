@@ -34,7 +34,7 @@ class LoginHandler(webapp2.RequestHandler):
                         users.create_login_url('/'))
 
         #self.response.out.write('<html><body>%s</body></html>' % greeting)
-        self.response.write(greeting)
+        self.response.write(template.render())
 
 #Homepage
 class HomeHandler(webapp2.RequestHandler):

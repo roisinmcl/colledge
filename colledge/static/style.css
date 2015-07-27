@@ -1,4 +1,10 @@
 body {
   font-family:'Wellfleet';
   background-image: url("cbf52adea9c440199cd548fecd886bc5.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+h1 {font-family:'Wellfleet';
+
 }
