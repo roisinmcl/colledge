@@ -16,7 +16,7 @@
 #
 import webapp2
 from google.appengine.api import users
-import jinja
+import jinja2
 
 #global variable which uses FileSystemLoader to load templates folder
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
