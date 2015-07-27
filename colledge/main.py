@@ -16,10 +16,26 @@
 #
 import webapp2
 
-class MainHandler(webapp2.RequestHandler):
+#Login
+class LoginHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
+#Homepage
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('This is the home page')
+
+#Profile
+class ProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('This is a profile page')
+
+#College
+class CollegeHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('This is a college')
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', LoginHandler)
 ], debug=True)
