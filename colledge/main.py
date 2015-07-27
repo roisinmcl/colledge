@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 import webapp2
+from google.appengine.api import users
 import jinja
 
 #global variable which uses FileSystemLoader to load templates folder
