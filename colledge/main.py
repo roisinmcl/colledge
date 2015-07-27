@@ -54,9 +54,16 @@ class CollegeHandler(webapp2.RequestHandler):
         template = env.get_template('college.html')
         self.response.write('This is a college')
 
+#Testing
+class TestHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('test.html')
+        self.response.write('testing')
+
 app = webapp2.WSGIApplication([
     ('/', LoginHandler),
     ('/home', HomeHandler),
     ('/profile', ProfileHandler),
-    ('/college', CollegeHandler)
+    ('/college', CollegeHandler),
+    ('/test', TestHandler)
 ], debug=True)
