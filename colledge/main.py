@@ -30,7 +30,7 @@ class LoginHandler(webapp2.RequestHandler):
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
                         (user.nickname(), users.create_logout_url('/')))
         else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
+            greeting =('<a href="%s" >Sign-in with Gmail</a>' %
                         users.create_login_url('/'))
 
         #self.response.out.write('<html><body>%s</body></html>' % greeting)
