@@ -15,6 +15,10 @@
 # limitations under the License.
 #
 import webapp2
+import jinja
+
+#global variable which uses FileSystemLoader to load templates folder
+env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 #Login
 class LoginHandler(webapp2.RequestHandler):
