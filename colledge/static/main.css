@@ -1,0 +1,138 @@
+h1 {
+  color: black;
+  font-family: Georgia, sans-serif;
+  border: black;
+}
+
+#main {
+  font-size: 40px;
+}
+
+h2 {
+  color: MidnightBlue;
+  font-family: Georgia, serif;
+  text-decoration: none;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+h3 {
+    font-family: Georgia, serif;
+    text-align: right;
+    margin-top: 4px;
+    padding-bottom: 5px;
+}
+
+p {
+    font-size: 17px;
+    font-style: Georgia, serif;
+}
+
+body {
+  background-color: AliceBlue;
+}
+
+section {
+  margin-right: 150px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 150px;
+  background-color: white;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
+  border-style: solid;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-width: thin;
+  border-color: black;
+  /*box-shadow: 3px 3px 3px #222;*/
+
+}
+
+#comment {
+  align: left
+
+}
+
+h1, h2, h3 {
+  text-align: right;
+  margin-right: 30px;
+  /*margin-right: 30px;*/
+
+}
+
+a {
+  color: SteelBlue;
+  text-align:  center;
+}
+
+h4 {
+  color: black;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+header {
+  padding-top: 100px;
+  background-color: #87bbEB;
+  margin-bottom: 20px;
+  padding-right: 0px;
+}
+
+body {
+  margin: 0px;
+  font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+}
+
+#menu {
+    /*margin-left: 160px;
+    margin-right: 160px;*/
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    font-family: Georgia, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #444444;
+    text-align: center;
+    align-items: center;
+}
+
+#menu ul {
+    height: auto;
+    padding: 8px 0px;
+    margin: 0px;
+}
+
+#menu li {
+  display: inline;
+  padding: 20px;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 8px 8px 8px 8px;
+}
+
+#menu a:hover {
+    color: #F90;
+    background-color: #FFF;
+}
+
+#pageintro {
+  text-align: center;
+  font-size: 20px;
+}
+
+#name, #loc {
+  text-align: right;
+}
+
+#cont {
+  font-size: 18px;
+}
+
+/* mdn in search queries */
