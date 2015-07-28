@@ -22,14 +22,18 @@ from google.appengine.api import users
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
+class College(ndb.Model):
+    name = ndb.StringProperty(required=True)
+
+class Event(ndb.Model):
+   name = ndb.StringProperty(required=True)
+   school = ndb.KeyProperty(kind=College)
 
 class Post(ndb.Model):
     title = ndb.StringProperty(required=True)
     content = ndb.TextProperty(required=True)
     timestamp = ndb.DateTimeProperty(required=True)
-
-class College(ndb.Model):
-    name = ndb.StringProperty(required=True)
+    event = ndb.KeyProperty(kind=Event)
 
 #navigate to a page to create a profile when they log in for the first time
 class Profile(ndb.Model):
@@ -43,6 +47,7 @@ class LoginHandler(webapp2.RequestHandler):
         template = env.get_template('login.html')
         user = users.get_current_user()
         if user:
+            self.redirect('/school')
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
                         (user.nickname(), users.create_logout_url('/')))
         else:
@@ -56,10 +61,34 @@ class LoginHandler(webapp2.RequestHandler):
 
 class SchoolHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+        user_email = user.email()
+        profiles = Profile.query( user_email == Profile.email ).fetch()
+        profile = profiles[0]
         template = env.get_template('main.html')
+        events = Event.query().fetch() #eventually add only the ones for this school using event.school == schoolkey
+        user = users.get_current_user()
+        greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+                    (user.nickname(), users.create_logout_url('/')))
+        variables = {'events': events, 'greeting': greeting, 'profile': profile }
+        self.response.write(template.render(variables))
+
+    def post(self):
+        title = self.request.get('title')
+        event = Event(name="title", school = ndb.Key(College, 'ucsc'))
+        event.put()
+        return self.redirect("/school")
+
+class EventHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        user_email = user.email()
+        profiles = Profile.query( user_email == Profile.email ).fetch()
+        profile = profiles[0]
+        template = env.get_template('event.html')
         posts = Post.query().fetch()
         posts.sort(key=lambda x: x.timestamp, reverse=True)
-        variables = {'posts': posts }
+        variables = {'posts': posts, 'profile': profile }
         self.response.write(template.render(variables))
 
     def post(self):
@@ -70,14 +99,13 @@ class SchoolHandler(webapp2.RequestHandler):
         post = Post(title=title, content=content,
                     timestamp=datetime.datetime.now())
         post.put()
-        return self.redirect("/school")
-
+        return self.redirect("/event")
 
 
 class SetupHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        user_email = user.nickname() + "@gmail.com"
+        user_email = user.email()
         if(Profile.query(Profile.email==user_email).fetch()):
             self.redirect('/school')
         else:
@@ -97,15 +125,16 @@ class SetupHandler(webapp2.RequestHandler):
         last_name = self.request.get('last_name')
         school = self.request.get('school')
         email = user.nickname() + "@gmail.com"
-        if school is 'gt':
+        if school == 'georgetown':
             college = ndb.Key(College, "georgetown")
-        elif school is 'sc':
+        elif school == 'ucsc':
             college = ndb.Key(College, "ucsc")
         else:
             college = ndb.Key(College, "ucberkley")
         profile = Profile(email=email, first_name=first_name,
                           last_name=last_name, school=college)
         profile.put()
+
         profile_key = profile.key.urlsafe()
         #urlsafe_key = ndb.Key(urlsafe=profile_key)
         self.redirect('/success?key=%s' %profile_key)
@@ -115,23 +144,33 @@ class SetupHandler(webapp2.RequestHandler):
 class SuccessHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('success.html')
-        urlsafe_key = self.request.get('key')
-        profile_key = ndb.Key(urlsafe=urlsafe_key)
-        profile = profile_key.get()
+        user = users.get_current_user()
+        user_email = user.email()
+        profiles = Profile.query( user_email == Profile.email ).fetch()
+        profile = profiles[0]
         variables = {'profile': profile, 'urlsafe_key': urlsafe_key}
         self.response.write(template.render(variables))
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('profile.html')
-
-        self.response.write(template.render())
+        user = users.get_current_user()
+        user_email = user.email()
+        profiles = Profile.query( user_email == Profile.email ).fetch()
+        profile = profiles[0]
+        variables = {'profile': profile }
+        self.response.write(template.render(variables))
 
 
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('about.html')
-        self.response.write(template.render())
+        user = users.get_current_user()
+        user_email = user.email()
+        profiles = Profile.query( user_email == Profile.email ).fetch()
+        profile = profiles[0]
+        variables = {'profile': profile }
+        self.response.write(template.render(variables))
 
 
 app = webapp2.WSGIApplication([
@@ -140,6 +179,7 @@ app = webapp2.WSGIApplication([
     ('/profile', ProfileHandler), #your profile, "profile.html"
     ('/about', AboutHandler), #about the website, "about.html"
     ('/setup', SetupHandler), #set up your accout, "setup.html"
-    ('/success', SuccessHandler) #your account was successfully created, "profile.html"
+    ('/success', SuccessHandler), #you have successfully created your account
+    ('/event', EventHandler) #your account was successfully created, "profile.html"
 
 ], debug=True)

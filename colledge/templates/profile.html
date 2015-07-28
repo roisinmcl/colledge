@@ -9,7 +9,7 @@
       <div id="menu">
         <ul>
           <li><a href="/school">My School</a></li>
-          <li><a href="/profile/profile?key={{urlsafe_key}}">Profile</a></li>
+          <li><a href="/profile">Profile</a></li>
           <li><a href="/about">About</a></li>
         </div>
     </header>
@@ -18,8 +18,8 @@
         <section>
           <p>This is where an image will go </p>
         </section>
-      <h4>Insert first name</h4>
-      <p>Insert school name</p>
+      <h4>{{profile.first_name}} {{profile.last_name}}</h4>
+      <p>{{profile.school.get().name}}</p>
     </section>
   </body>
 </html>
