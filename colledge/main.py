@@ -48,10 +48,10 @@ class LoginHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         if user:
             self.redirect('/school')
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            greeting = ('Welcome, %s! (<a href="%s" class="btn">sign out</a>)' %
                         (user.nickname(), users.create_logout_url('/')))
         else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
+            greeting = ('<a href="%s"class="btn">Sign in or register</a>.' %
                         users.create_login_url(dest_url='/setup', _auth_domain=None, federated_identity=None
                         ))
 
@@ -112,6 +112,7 @@ class SetupHandler(webapp2.RequestHandler):
             template = env.get_template('setup.html')
             self.response.write(template.render())
 
+
     def post(self):
         georgetown = College(name="Georgetown", id="georgetown")
         georgetown.put()
@@ -134,21 +135,26 @@ class SetupHandler(webapp2.RequestHandler):
         profile = Profile(email=email, first_name=first_name,
                           last_name=last_name, school=college)
         profile.put()
-
         profile_key = profile.key.urlsafe()
         #urlsafe_key = ndb.Key(urlsafe=profile_key)
-        self.redirect('/success?key=%s' %profile_key)
+        self.redirect('/success?key=%s' %profile_key )
 
 
 
 class SuccessHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('success.html')
+        key = self.request.get('key')
+        urlsafe_key = ndb.Key(urlsafe=key)
+        profile = urlsafe_key.get()
+
+        '''
         user = users.get_current_user()
         user_email = user.email()
         profiles = Profile.query( user_email == Profile.email ).fetch()
         profile = profiles[0]
-        variables = {'profile': profile, 'urlsafe_key': urlsafe_key}
+        '''
+        variables = {'profile': profile }
         self.response.write(template.render(variables))
 
 class ProfileHandler(webapp2.RequestHandler):
