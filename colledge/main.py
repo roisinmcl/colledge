@@ -118,28 +118,14 @@ class SuccessHandler(webapp2.RequestHandler):
         urlsafe_key = self.request.get('key')
         profile_key = ndb.Key(urlsafe=urlsafe_key)
         profile = profile_key.get()
-        variables = {'profile': profile}
+        variables = {'profile': profile, 'urlsafe_key': urlsafe_key}
         self.response.write(template.render(variables))
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('profile.html')
-        posts = Post.query().fetch()
-        posts.sort(key=lambda x: x.timestamp, reverse=True)
-        variables = {'posts': posts }
 
         self.response.write(template.render())
-
-
-    def post(self):
-        template = env.get_template('feed.html')
-        content = self.request.get('content')
-        title = self.request.get('title')
-        timestamp = self.request.get('timestamp')
-        post = Post(title=title, content=content,
-                        timestamp=datetime.datetime.now())
-        post.put()
-        return self.redirect("/profile")
 
 
 class AboutHandler(webapp2.RequestHandler):

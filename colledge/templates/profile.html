@@ -9,7 +9,7 @@
       <div id="menu">
         <ul>
           <li><a href="/school">My School</a></li>
-          <li><a href="/profile">Profile</a></li>
+          <li><a href="/profile/profile?key={{urlsafe_key}}">Profile</a></li>
           <li><a href="/about">About</a></li>
         </div>
     </header>
@@ -18,8 +18,12 @@
         <section>
           <p>This is where an image will go </p>
         </section>
-      <h4>Insert name</h4>
+      <h4>Insert first name</h4>
       <p>Insert school name</p>
     </section>
   </body>
 </html>
+
+<!-- add/subtract profile variables- works coming from the success handler
+    but not from the other handlers. need to add keys from other webpages
+      profile.school.get().name to get school name  -->
