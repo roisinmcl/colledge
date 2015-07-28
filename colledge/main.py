@@ -16,54 +16,134 @@
 #
 import webapp2
 import jinja2
+import datetime
+from google.appengine.ext import ndb
 from google.appengine.api import users
 
-#global variable which uses FileSystemLoader to load templates folder
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
-#Login
+
+class Post(ndb.Model):
+    title = ndb.StringProperty(required=True)
+    content = ndb.TextProperty(required=True)
+    timestamp = ndb.DateTimeProperty(required=True)
+
+class College(ndb.Model):
+    name = ndb.StringProperty(required=True)
+
+#navigate to a page to create a profile when they log in for the first time
+class Profile(ndb.Model):
+    email = ndb.StringProperty(required=True)
+    first_name = ndb.StringProperty(required=True)
+    last_name = ndb.StringProperty(required=True)
+    school = ndb.KeyProperty(kind=College)
+
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('login.html')
         user = users.get_current_user()
         if user:
-            greeting = ('Welcome, %s! (<a href="%s" class="btn">sign out</a>)' %
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
                         (user.nickname(), users.create_logout_url('/')))
         else:
-            greeting =('<a href="%s" class="btn">Sign-in with Gmail</a>' %
-                        users.create_login_url('/'))
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+                        users.create_login_url(dest_url='/setup', _auth_domain=None, federated_identity=None
+                        ))
 
         #self.response.out.write('<html><body>%s</body></html>' % greeting)
         self.response.write(template.render({"greeting": greeting}))
 
-#Homepage
-class HomeHandler(webapp2.RequestHandler):
-    def get(self):
-        template = env.get_template('home.html')
-        self.response.write('This is the home page')
 
-#Profile
+class SchoolHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('main.html')
+        posts = Post.query().fetch()
+        posts.sort(key=lambda x: x.timestamp, reverse=True)
+        variables = {'posts': posts }
+        self.response.write(template.render(variables))
+
+    def post(self):
+        template = env.get_template('main.html')
+        content = self.request.get('content')
+        title = self.request.get('title')
+        timestamp = self.request.get('timestamp')
+        post = Post(title=title, content=content,
+                    timestamp=datetime.datetime.now())
+        post.put()
+        return self.redirect("/school")
+
+
+
+class SetupHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('setup.html')
+        self.response.write(template.render())
+
+    def post(self):
+        georgetown = College(name="Georgetown", id="georgetown")
+        georgetown.put()
+        ucsc = College(name="UCSC", id="ucsc")
+        ucsc.put()
+        ucberkley = College(name="UC Berkley", id='ucberkley')
+        ucberkley.put()
+        user = users.get_current_user()
+        first_name= self.request.get('first_name')
+        last_name= self.request.get('last_name')
+        school=self.request.get('school')
+        email = user.user_id()
+        if school is 'georgetown':
+            college = georgetown
+        if school is 'ucsc':
+            college = ucsc
+        else :
+            college = ucberkley
+        profile = Profile(email=email, first_name=first_name,
+                          last_name=last_name, school=college.key)
+        profile.put()
+        self.redirect('/success')
+
+
+
+class SuccessHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('success.html')
+        self.response.write(template.render())
+
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
+
         template = env.get_template('profile.html')
-        self.response.write('This is a profile page')
+        posts = Post.query().fetch()
+        posts.sort(key=lambda x: x.timestamp, reverse=True)
+        variables = {'posts': posts }
 
-#College
-class CollegeHandler(webapp2.RequestHandler):
-    def get(self):
-        template = env.get_template('college.html')
-        self.response.write('This is a college')
+        self.response.write(template.render())
 
-#Testing
-class TestHandler(webapp2.RequestHandler):
+
+    def post(self):
+        template = env.get_template('feed.html')
+        content = self.request.get('content')
+        title = self.request.get('title')
+        timestamp = self.request.get('timestamp')
+        post = Post(title=title, content=content,
+                        timestamp=datetime.datetime.now())
+        post.put()
+        return self.redirect("/profile")
+
+
+class AboutHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('test.html')
-        self.response.write('testing')
+        template = env.get_template('about.html')
+        self.response.write(template.render())
+
 
 app = webapp2.WSGIApplication([
-    ('/', LoginHandler),
-    ('/home', HomeHandler),
-    ('/profile', ProfileHandler),
-    ('/college', CollegeHandler),
-    ('/test', TestHandler)
+    ('/', LoginHandler), #login page
+    ('/school', SchoolHandler), #school feed, "school.html"
+    ('/profile', ProfileHandler), #your profile, "profile.html"
+    ('/about', AboutHandler), #about the website, "about.html"
+    ('/setup', SetupHandler), #set up your accout, "setup.html"
+    ('/success', SuccessHandler) #your account was successfully created, "profile.html"
+
 ], debug=True)
+
