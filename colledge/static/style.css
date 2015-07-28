@@ -1,17 +1,19 @@
 body {
   font-family:'Wellfleet';
-  background-image: url("http://cdn.desktopwallpapers4.me/wallpapers/abstract/1920x1080/1/3232-colorful-circles-1920x1080-abstract-wallpaper.jpg");
+  background-image;
   background-repeat:no-repeat;
   background-size:cover;
+  text-align: center;
+
 }
 
 a {font-family:'Wellfleet';
     position: absolute;
     top: 30%;
-    left: 42%;
+    left: 41%;
     font-size:25px;
     text-decoration: none;
-    color: #fff;
+    color: black;
 
 
 }
@@ -21,4 +23,23 @@ p {
   color: green;
   text-align:center;
 
+}
+
+
+
+.btn {
+  background: #B03618;
+  background-image: -webkit-linear-gradient(top, #B03618, #B03618);
+  background-image: -moz-linear-gradient(top, #B03618, #B03618);
+  background-image: -ms-linear-gradient(top, #B03618, #B03618);
+  background-image: -o-linear-gradient(top, #B03618, #B03618);
+  background-image: linear-gradient(to bottom, #B03618, #B03618);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }

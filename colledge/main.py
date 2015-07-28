@@ -27,10 +27,10 @@ class LoginHandler(webapp2.RequestHandler):
         template = env.get_template('login.html')
         user = users.get_current_user()
         if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            greeting = ('Welcome, %s! (<a href="%s" class="btn">sign out</a>)' %
                         (user.nickname(), users.create_logout_url('/')))
         else:
-            greeting =('<a href="%s" >Sign-in with Gmail</a>' %
+            greeting =('<a href="%s" class="btn">Sign-in with Gmail</a>' %
                         users.create_login_url('/'))
 
         #self.response.out.write('<html><body>%s</body></html>' % greeting)
