@@ -106,22 +106,20 @@ class SetupHandler(webapp2.RequestHandler):
         profile = Profile(email=email, first_name=first_name,
                           last_name=last_name, school=college)
         profile.put()
-        url_safe_key = profile.key
-        post_key = ndb.Key(urlsafe=urlsafe_post_key)
-        self.redirect('/success?key=%s' %post_key)
+        profile_key = profile.key.urlsafe()
+        #urlsafe_key = ndb.Key(urlsafe=profile_key)
+        self.redirect('/success?key=%s' %profile_key)
 
 
 
 class SuccessHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('success.html')
-        '''
-        urlsafe_post_key = self.request.get('key')
-        profile_key = ndb.Key(urlsafe=urlsafe_post_key)
+        urlsafe_key = self.request.get('key')
+        profile_key = ndb.Key(urlsafe=urlsafe_key)
         profile = profile_key.get()
         variables = {'profile': profile}
-        '''
-        self.response.write(template.render())
+        self.response.write(template.render(variables))
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
