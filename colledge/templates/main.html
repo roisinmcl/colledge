@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COLLedge</title> <!-- this is a comment -->
+    <link href="static/main.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header><!--CSSI 2015 - Google Mountain View-->
+    <h1 id=main>name of school | COLLedge</h1>
+    <!--<h2>Georgetown University</h2>-->
+    <div id="menu">
+      <ul>
+        <li><a href="/school">My School</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/about">About</a></li>
+      </div>
+    </header>
+    <h2 id=pageintro>Name of School</h2>
+
+    </section>
+      <p id=pageintro>{{greeting}}</p>
+    </section>
+
+    <p id=pageintro>Share a post to your school community!</p>
+    <section>
+      <form method="POST" action="">
+      <p>Title: <input type="text" name="title" /><p>
+      <p>Post: <br><textarea name="content" rows=5, cols=60></textarea></p>
+      <!--<p>Name: (optional): <input type="text" name="name" /></p>
+      <p>Location (optional): <input type="text" name="loc" /></p>-->
+      <input type="submit" />
+    </section>
+    {% for post in posts %}
+      <section>
+        <h2><a href='/post?key={{post.key.urlsafe()}}'>{{post.title}}</a></h2>
+        <p>{{post.content}}</p>
+        <h3>{{post.timestamp}}</h3>
+      </section>
+    {% endfor %}
+  </section>
+
+    <footer>Mondy, July 13th, 2015 - Last Upated July 23rd, 2015</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="static/main.js"></script>
+
+  </body>
+</html>
