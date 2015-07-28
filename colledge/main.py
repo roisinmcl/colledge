@@ -125,7 +125,7 @@ class SetupHandler(webapp2.RequestHandler):
         first_name = self.request.get('first_name')
         last_name = self.request.get('last_name')
         school = self.request.get('school')
-        email = user.nickname() + "@gmail.com"
+        email = user.email()
         if school == 'georgetown':
             college = ndb.Key(College, "georgetown")
         elif school == 'ucsc':
@@ -137,6 +137,8 @@ class SetupHandler(webapp2.RequestHandler):
         profile.put()
         profile_key = profile.key.urlsafe()
         #urlsafe_key = ndb.Key(urlsafe=profile_key)
+        #profiles = Profile.query( user_email == Profile.email ).fetch()
+        #profile = profiles[0]
         self.redirect('/success?key=%s' %profile_key )
 
 
@@ -147,13 +149,11 @@ class SuccessHandler(webapp2.RequestHandler):
         key = self.request.get('key')
         urlsafe_key = ndb.Key(urlsafe=key)
         profile = urlsafe_key.get()
-
-        '''
         user = users.get_current_user()
         user_email = user.email()
         profiles = Profile.query( user_email == Profile.email ).fetch()
-        profile = profiles[0]
-        '''
+        if len(profiles) > 0:
+            profile_object = profiles[0]
         variables = {'profile': profile }
         self.response.write(template.render(variables))
 
