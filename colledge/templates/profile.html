@@ -15,20 +15,11 @@
     </header>
       <p id=pageintro></p>
       <section>
-        <form method="POST" action="">
-        <p>Title: <input type="text" name="title" /><p>
-        <p>Post: <br><textarea name="content" rows=5, cols=60></textarea></p>
-        <!--<p>Name: (optional): <input type="text" name="name" /></p>
-        <p>Location (optional): <input type="text" name="loc" /></p>-->
-        <input type="submit" />
-      </section>
-      {% for post in posts %}
         <section>
-          <h2><a href='/post?key={{post.key.urlsafe()}}'>{{post.title}}</a></h2>
-          <p>{{post.content}}</p>
-          <h3>{{post.timestamp}}</h3>
+          <p>This is where an image will go </p>
         </section>
-      {% endfor %}
+      <h4>Insert Name Variable</h4>
+      <p>Insert School Name Variable</p>
     </section>
   </body>
 </html>

@@ -76,8 +76,13 @@ class SchoolHandler(webapp2.RequestHandler):
 
 class SetupHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('setup.html')
-        self.response.write(template.render())
+        user = users.get_current_user()
+        user_email = user.nickname() + "@gmail.com"
+        if(Profile.query(Profile.email==user_email).fetch()):
+            self.redirect('/school')
+        else:
+            template = env.get_template('setup.html')
+            self.response.write(template.render())
 
     def post(self):
         georgetown = College(name="Georgetown", id="georgetown")
@@ -86,32 +91,40 @@ class SetupHandler(webapp2.RequestHandler):
         ucsc.put()
         ucberkley = College(name="UC Berkley", id='ucberkley')
         ucberkley.put()
+
         user = users.get_current_user()
-        first_name= self.request.get('first_name')
-        last_name= self.request.get('last_name')
-        school=self.request.get('school')
-        email = user.user_id()
-        if school is 'georgetown':
-            college = georgetown
-        if school is 'ucsc':
-            college = ucsc
-        else :
-            college = ucberkley
+        first_name = self.request.get('first_name')
+        last_name = self.request.get('last_name')
+        school = self.request.get('school')
+        email = user.nickname() + "@gmail.com"
+        if school is 'gt':
+            college = ndb.Key(College, "georgetown")
+        elif school is 'sc':
+            college = ndb.Key(College, "ucsc")
+        else:
+            college = ndb.Key(College, "ucberkley")
         profile = Profile(email=email, first_name=first_name,
-                          last_name=last_name, school=college.key)
+                          last_name=last_name, school=college)
         profile.put()
-        self.redirect('/success')
+        url_safe_key = profile.key
+        post_key = ndb.Key(urlsafe=urlsafe_post_key)
+        self.redirect('/success?key=%s' %post_key)
 
 
 
 class SuccessHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('success.html')
+        '''
+        urlsafe_post_key = self.request.get('key')
+        profile_key = ndb.Key(urlsafe=urlsafe_post_key)
+        profile = profile_key.get()
+        variables = {'profile': profile}
+        '''
         self.response.write(template.render())
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
-
         template = env.get_template('profile.html')
         posts = Post.query().fetch()
         posts.sort(key=lambda x: x.timestamp, reverse=True)
@@ -146,4 +159,3 @@ app = webapp2.WSGIApplication([
     ('/success', SuccessHandler) #your account was successfully created, "profile.html"
 
 ], debug=True)
-
