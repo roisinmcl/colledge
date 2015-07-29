@@ -11,7 +11,7 @@
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   border-radius: 5px;
-  margin-left: 1200px;
+  margin:auto;
   position: absolute;
   top:40px;
   right:40px
@@ -41,4 +41,3 @@ a {
     text-decoration: none;
     color: black;
 }
-
