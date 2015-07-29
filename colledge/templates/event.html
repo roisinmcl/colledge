@@ -23,9 +23,10 @@
 
     <p id=pageintro>Share a post about {{event.name}}!</p>
     <section>
-      <form method="POST" action="">
+      <form method="POST" action="/event?key={{event.key.urlsafe()}}" enctype="multipart/form-data">
       <p>Title: <input type="text" name="title" /><p>
       <p>Post: <br><textarea name="content" rows=5, cols=60></textarea></p>
+      <div>Image: <input type="file" name="img"></div>
       <!--<p>Name: (optional): <input type="text" name="name" /></p>
       <p>Location (optional): <input type="text" name="loc" /></p>-->
       <input type="submit" />
@@ -33,6 +34,7 @@
     {% for post in posts %}
       <section>
         <h2>{{post.title}}</h2>
+        <img src="/img?post_id={{post.key.urlsafe()}}"></img>
         <p>{{post.content}}</p>
         <h3>{{post.timestamp}}</h3>
       </section>

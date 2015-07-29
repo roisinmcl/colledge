@@ -17,6 +17,7 @@
 import webapp2
 import jinja2
 import datetime
+from google.appengine.api import images
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
@@ -32,6 +33,7 @@ class Event(ndb.Model):
 class Post(ndb.Model):
     title = ndb.StringProperty(required=True)
     content = ndb.TextProperty(required=True)
+    img = ndb.BlobProperty()
     timestamp = ndb.DateTimeProperty(required=True)
     event = ndb.KeyProperty(kind=Event)
 
@@ -110,8 +112,11 @@ class EventHandler(webapp2.RequestHandler):
         urlsafe_key = ndb.Key(urlsafe=key)
         profile = urlsafe_key.get()
         event_key = ndb.Key(urlsafe=key) #im working on this line
-        post = Post(title=title, content=content,
-                    timestamp=datetime.datetime.now(), event=event_key)
+        post = Post(title=title,
+                    content=content,
+                    img=self.request.get('img'),
+                    timestamp=datetime.datetime.now(),
+                    event=event_key)
         post.put()
         return self.redirect("/event?key=%s" %key)
 
@@ -192,6 +197,12 @@ class AboutHandler(webapp2.RequestHandler):
         variables = {'profile': profile }
         self.response.write(template.render(variables))
 
+class ImageHandler(webapp2.RequestHandler):
+    def get(self):
+        post_id = self.request.get('post_id')
+        post_id_key = ndb.Key(urlsafe=post_id)
+        post_model = post_id_key.get()
+        self.response.write(post_model.img)
 
 app = webapp2.WSGIApplication([
     ('/', LoginHandler), #login page
@@ -200,6 +211,7 @@ app = webapp2.WSGIApplication([
     ('/about', AboutHandler), #about the website, "about.html"
     ('/setup', SetupHandler), #set up your accout, "setup.html"
     ('/success', SuccessHandler), #you have successfully created your account
-    ('/event', EventHandler) #your account was successfully created, "profile.html"
+    ('/event', EventHandler), #your account was successfully created, "profile.html"
+    ('/img', ImageHandler)
 
 ], debug=True)
