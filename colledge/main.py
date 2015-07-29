@@ -83,7 +83,8 @@ class SchoolHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
                     (profile.first_name, users.create_logout_url('/')))
-        variables = {'events': events, 'greeting': greeting, 'profile': profile }
+        logout = users.create_logout_url('/')
+        variables = {'events': events, 'greeting': greeting, 'profile': profile, 'logout': logout }
         self.response.write(template.render(variables))
 
     def post(self):
@@ -114,7 +115,8 @@ class EventHandler(webapp2.RequestHandler):
         event = urlsafe_key.get()
         posts = Post.query( Post.event == event.key ).fetch() # this line query added
         posts.sort(key=lambda x: x.timestamp, reverse=True)
-        variables = {'posts': posts, 'profile': profile, 'event': event }
+        logout = users.create_logout_url('/')
+        variables = {'posts': posts, 'profile': profile, 'event': event, "logout": logout }
         self.response.write(template.render(variables))
 
     def post(self):
@@ -190,7 +192,8 @@ class SuccessHandler(webapp2.RequestHandler):
         profiles = Profile.query( user_email == Profile.email ).fetch()
         if len(profiles) > 0:
             profile_object = profiles[0]
-        variables = {'profile': profile }
+        logout = users.create_logout_url('/')
+        variables = {'profile': profile, 'logout': logout }
         self.response.write(template.render(variables))
 
 class ProfileHandler(webapp2.RequestHandler):
@@ -216,7 +219,8 @@ class AboutHandler(webapp2.RequestHandler):
         profiles = Profile.query( user_email == Profile.email ).fetch()
         profile = profiles[0]
         '''
-        variables = {'profile': profile }
+        logout = users.create_logout_url('/')
+        variables = {'profile': profile, 'logout': logout }
         self.response.write(template.render(variables))
 
 class ImageHandler(webapp2.RequestHandler):
