@@ -117,6 +117,26 @@ section {
 }
 
 
+#schoolname h1  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+}
+
+#createvent p  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+}
+
+#eventposts a  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none; 
+}
+
+
+
 #setup_form {
   font-family: 'Graduate', cursive;
   color: #266275;

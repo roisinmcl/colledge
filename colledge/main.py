@@ -196,13 +196,13 @@ class SuccessHandler(webapp2.RequestHandler):
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('profile.html')
-
+        logout = users.create_logout_url('/')
         profile = get_logged_in_user()
         #user = users.get_current_user()
         #user_email = user.email()
         #profiles = Profile.query( user_email == Profile.email ).fetch()
         #profile = profiles[0]
-        variables = {'profile': profile }
+        variables = {'profile': profile, 'logout':logout }
         self.response.write(template.render(variables))
 
 

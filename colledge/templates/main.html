@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>COLLedge</title> <!-- this is a comment -->
-    <link href="static/main.css" rel="stylesheet" type="text/css">
+    <title>School</title> <!-- this is a comment -->
+    <link href="static/maintemplate.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
   </head>
+
   <body>
-    <header><!--CSSI 2015 - Google Mountain View-->
-    <h1 id=main>name of school | COLLedge</h1>
-    <!--<h2>Georgetown University</h2>-->
+
+    <img src="static/colledge_logo.png">
     <div id="menu">
-      <ul>
-        <li><a href="/school">My School</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/about">About</a></li>
-      </div>
-    </header>
-    <h2 id=pageintro>{{profile.school.get().name}}</h2>
 
-    </section>
-      <p id=pageintro>{{greeting}}</p>
-    </section>
+            <ul>
 
-    <p id=pageintro>Choose an event thread or create your own for the {{profile.school.get().name}} community!</p>
+              <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
+              <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
+              <li><a href="/" id="image3"><img src="static/logout_icon.png"></a></li>
+
+            </ul>
+  </div>
+
+  <div id="schoolname"> <h1> {{profile.school.get().name}}</h1> </div>
+
+
     <section>
-      <form method="POST" action="">
-      <p>Event Title: <input type="text" name="title" /><p>
-      <input type="submit" />
-    </section>
-    {% for event in events %}
-      <section>
-        <h2><a href='/event?key={{event.key.urlsafe()}}'>{{event.name}}</a></h2>
-      </section>
-    {% endfor %}
-  </section>
 
-    <footer>Mondy, July 13th, 2015 - Last Upated July 23rd, 2015</footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="static/main.js"></script>
+    <div id="createvent"> <p> Create an event for the {{profile.school.get().name}} community!</p> </div>
+
+      <form method="POST" action="">
+        <p> Event Title: <input type="text" name="title" /><p>
+      <input type="submit" />
+
+    </section>
+
+    {% for event in events %}
+    <div id="eventposts">
+      <section>
+      <a href='/event?key={{event.key.urlsafe()}}'>{{event.name}} </a>
+      </section>
+
+    {% endfor %}
 
   </body>
 </html>
