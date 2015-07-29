@@ -1,29 +1,39 @@
 <html>
-  <head>
-    <title>collEDGE</title>
-    <link href="static/main.css" rel="stylesheet" type="text/css">
-  </head>
-  <body>
-    <header>
-      <h1 id=main>profile | collEDGE</h1>
-      <div id="menu">
-        <ul>
-          <li><a href="/school">My School</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/about">About</a></li>
-        </div>
-    </header>
-      <p id=pageintro></p>
-      <section>
-        <section>
-          <p>This is where an image will go </p>
-        </section>
-      <h4>{{profile.first_name}} {{profile.last_name}}</h4>
-      <p>{{profile.school.get().name}}</p>
-    </section>
-  </body>
-</html>
+        <head>
+          <title>Profile</title>
+          <link href="static/maintemplate.css" rel="stylesheet" type="text/css">
+          <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+        </head>
 
-<!-- add/subtract profile variables- works coming from the success handler
-    but not from the other handlers. need to add keys from other webpages
-      profile.school.get().name to get school name  -->
+        <body>
+            <img src="static/colledge_logo.png">
+
+            <div id="menu">
+
+                    <ul>
+
+                      <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
+                      <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
+                      <li><a href="/" id="image3"><img src="static/menu_icon.png"></a></li>
+
+                    </ul>
+          </div>
+
+          <br>
+
+        <div class="circular"><img src="https://www.tinkercad.com/images/ftXsoTZIjVq/t200.jpg?t=0" alt=" "/></div>
+
+        <br>
+
+          <div id="main2"> <h1> {{profile.first_name}} {{profile.last_name}} </h1> </div>
+          <div id="main4"> <h2>{{profile.school.get().name}}</h2> </div>
+
+          <div id="main3"> <section> <p>Profile Qualities go here</p></section>
+
+
+
+        </body>
+      </html>
+      <!-- add/subtract profile variables- works coming from the success handler
+          but not from the other handlers. need to add keys from other webpages
+            profile.school.get().name to get school name  -->
