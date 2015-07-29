@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>COLLedge</title> <!-- this is a comment -->
+    <title>Events</title> <!-- this is a comment -->
     <link href="static/main.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <header><!--CSSI 2015 - Google Mountain View-->
-    <h1 id=main>name of school | COLLedge</h1>
-    <!--<h2>Georgetown University</h2>-->
+
+    <img src="static/colledge_logo.png">
     <div id="menu">
-      <ul>
-        <li><a href="/school">My School</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/about">About</a></li>
-      </div>
-    </header>
-    <h2 id=pageintro>{{profile.school.get().name}} | {{event.name}}</h2>
+
+            <ul>
+
+              <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
+              <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
+              <li><a href="/" id="image3"><img src="static/logout_icon.png"></a></li>
+
+            </ul>
+
+
+    </div>
+
+    <div id="schoolnameandevent"> {{profile.school.get().name}} | {{event.name}}
+    </div>
 
     </section>
       <p id=pageintro>{{greeting}}</p>
