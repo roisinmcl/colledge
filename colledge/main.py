@@ -23,6 +23,13 @@ from google.appengine.api import users
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
+def get_logged_in_user():
+    user = users.get_current_user()
+    user_email = user.email()
+    profiles = Profile.query( user_email == Profile.email ).fetch()
+    profile = profiles[0]
+    return profile
+
 class College(ndb.Model):
     name = ndb.StringProperty(required=True)
 
@@ -63,10 +70,14 @@ class LoginHandler(webapp2.RequestHandler):
 
 class SchoolHandler(webapp2.RequestHandler):
     def get(self):
+
+        profile = get_logged_in_user()
+        '''
         user = users.get_current_user()
         user_email = user.email()
         profiles = Profile.query( user_email == Profile.email ).fetch()
         profile = profiles[0]
+        '''
         template = env.get_template('main.html')
         events = Event.query( Event.school == profile.school ).fetch() # added search query
         user = users.get_current_user()
@@ -76,10 +87,13 @@ class SchoolHandler(webapp2.RequestHandler):
         self.response.write(template.render(variables))
 
     def post(self):
+        profile = get_logged_in_user()
+        '''
         user = users.get_current_user()
         user_email = user.email()
         profiles = Profile.query( user_email == Profile.email ).fetch()
         profile = profiles[0]
+        '''
         title = self.request.get('title')
         event = Event(name=title, school = profile.school)
         event.put()
@@ -87,10 +101,13 @@ class SchoolHandler(webapp2.RequestHandler):
 
 class EventHandler(webapp2.RequestHandler):
     def get(self):
+        profile = get_logged_in_user()
+        '''
         user = users.get_current_user()
         user_email = user.email()
         profiles = Profile.query( user_email == Profile.email ).fetch()
         profile = profiles[0]
+        '''
         template = env.get_template('event.html')
         key = self.request.get('key')
         urlsafe_key = ndb.Key(urlsafe=key)
@@ -179,10 +196,12 @@ class SuccessHandler(webapp2.RequestHandler):
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('profile.html')
-        user = users.get_current_user()
-        user_email = user.email()
-        profiles = Profile.query( user_email == Profile.email ).fetch()
-        profile = profiles[0]
+
+        profile = get_logged_in_user()
+        #user = users.get_current_user()
+        #user_email = user.email()
+        #profiles = Profile.query( user_email == Profile.email ).fetch()
+        #profile = profiles[0]
         variables = {'profile': profile }
         self.response.write(template.render(variables))
 
@@ -190,10 +209,13 @@ class ProfileHandler(webapp2.RequestHandler):
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('about.html')
+        profile = get_logged_in_user()
+        '''
         user = users.get_current_user()
         user_email = user.email()
         profiles = Profile.query( user_email == Profile.email ).fetch()
         profile = profiles[0]
+        '''
         variables = {'profile': profile }
         self.response.write(template.render(variables))
 
