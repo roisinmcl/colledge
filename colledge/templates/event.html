@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Events</title> <!-- this is a comment -->
-    <link href="static/main.css" rel="stylesheet" type="text/css">
+    <link href="static/maintemplate.css" rel="stylesheet" type="text/css">
   </head>
   <body>
 
@@ -20,22 +20,19 @@
 
     </div>
 
-    <div id="schoolnameandevent"> {{profile.school.get().name}} | {{event.name}}
-    </div>
+    <div id="schoolnameandevent"> <h1> {{profile.school.get().name}} | {{event.name}} </h1> </div>
 
-    </section>
-      <p id=pageintro>{{greeting}}</p>
-    </section>
-
-    <p id=pageintro>Share a post about {{event.name}}!</p>
     <section>
+      <div id="shareapost"> <h2> Create a post about {{event.name}}! </h2> </div>
       <form method="POST" action="/event?key={{event.key.urlsafe()}}" enctype="multipart/form-data">
       <p>Title: <input type="text" name="title" /><p>
       <p>Post: <br><textarea name="content" rows=5, cols=60></textarea></p>
       <div>Image: <input type="file" name="img"></div>
+      <br>
       <!--<p>Name: (optional): <input type="text" name="name" /></p>
       <p>Location (optional): <input type="text" name="loc" /></p>-->
       <input type="submit" />
+
     </section>
     {% for post in posts %}
       <section>
@@ -46,10 +43,6 @@
       </section>
     {% endfor %}
   </section>
-
-    <footer>Mondy, July 13th, 2015 - Last Upated July 23rd, 2015</footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="static/main.js"></script>
 
   </body>
 </html>

@@ -132,7 +132,21 @@ section {
 #eventposts a  {
   font-family: 'Graduate', cursive;
   color: #266275;
-  text-decoration: none; 
+  text-decoration: none;
+}
+
+#schoolnameandevent h1  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+#shareapost h2  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
 }
 
 
