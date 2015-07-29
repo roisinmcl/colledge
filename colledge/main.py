@@ -66,18 +66,22 @@ class SchoolHandler(webapp2.RequestHandler):
         profiles = Profile.query( user_email == Profile.email ).fetch()
         profile = profiles[0]
         template = env.get_template('main.html')
-        events = Event.query().fetch() #eventually add only the ones for this school using event.school == schoolkey
+        events = Event.query( Event.school == profile.school ).fetch() # added search query
         user = users.get_current_user()
         greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-                    (user.nickname(), users.create_logout_url('/')))
+                    (profile.first_name, users.create_logout_url('/')))
         variables = {'events': events, 'greeting': greeting, 'profile': profile }
         self.response.write(template.render(variables))
 
     def post(self):
+        user = users.get_current_user()
+        user_email = user.email()
+        profiles = Profile.query( user_email == Profile.email ).fetch()
+        profile = profiles[0]
         title = self.request.get('title')
-        event = Event(name="title", school = ndb.Key(College, 'ucsc'))
+        event = Event(name=title, school = profile.school)
         event.put()
-        return self.redirect("/school")
+        self.redirect("/school")
 
 class EventHandler(webapp2.RequestHandler):
     def get(self):
@@ -86,20 +90,30 @@ class EventHandler(webapp2.RequestHandler):
         profiles = Profile.query( user_email == Profile.email ).fetch()
         profile = profiles[0]
         template = env.get_template('event.html')
-        posts = Post.query().fetch()
+        key = self.request.get('key')
+        urlsafe_key = ndb.Key(urlsafe=key)
+        event = urlsafe_key.get()
+        posts = Post.query( Post.event == event.key ).fetch() # this line query added
         posts.sort(key=lambda x: x.timestamp, reverse=True)
-        variables = {'posts': posts, 'profile': profile }
+        variables = {'posts': posts, 'profile': profile, 'event': event }
         self.response.write(template.render(variables))
 
     def post(self):
-        template = env.get_template('main.html')
+        user = users.get_current_user()
+        user_email = user.email()
+        profiles = Profile.query( user_email == Profile.email ).fetch()
+        profile = profiles[0]
         content = self.request.get('content')
         title = self.request.get('title')
         timestamp = self.request.get('timestamp')
+        key = self.request.get('key')
+        urlsafe_key = ndb.Key(urlsafe=key)
+        profile = urlsafe_key.get()
+        event_key = ndb.Key(urlsafe=key) #im working on this line
         post = Post(title=title, content=content,
-                    timestamp=datetime.datetime.now())
+                    timestamp=datetime.datetime.now(), event=event_key)
         post.put()
-        return self.redirect("/event")
+        return self.redirect("/event?key=%s" %key)
 
 
 class SetupHandler(webapp2.RequestHandler):
