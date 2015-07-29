@@ -89,12 +89,6 @@ class SchoolHandler(webapp2.RequestHandler):
 
     def post(self):
         profile = get_logged_in_user()
-        '''
-        user = users.get_current_user()
-        user_email = user.email()
-        profiles = Profile.query( user_email == Profile.email ).fetch()
-        profile = profiles[0]
-        '''
         title = self.request.get('title')
         event = Event(name=title, school = profile.school)
         event.put()
@@ -103,12 +97,6 @@ class SchoolHandler(webapp2.RequestHandler):
 class EventHandler(webapp2.RequestHandler):
     def get(self):
         profile = get_logged_in_user()
-        '''
-        user = users.get_current_user()
-        user_email = user.email()
-        profiles = Profile.query( user_email == Profile.email ).fetch()
-        profile = profiles[0]
-        '''
         template = env.get_template('event.html')
         key = self.request.get('key')
         urlsafe_key = ndb.Key(urlsafe=key)
@@ -120,20 +108,19 @@ class EventHandler(webapp2.RequestHandler):
         self.response.write(template.render(variables))
 
     def post(self):
-        user = users.get_current_user()
-        user_email = user.email()
-        profiles = Profile.query( user_email == Profile.email ).fetch()
-        profile = profiles[0]
+        profile = get_logged_in_user()
         content = self.request.get('content')
         title = self.request.get('title')
         timestamp = self.request.get('timestamp')
+        img = self.request.get('img') or None
         key = self.request.get('key')
-        urlsafe_key = ndb.Key(urlsafe=key)
-        profile = urlsafe_key.get()
+
         event_key = ndb.Key(urlsafe=key) #im working on this line
+        #profile = event_key.get()
+
         post = Post(title=title,
                     content=content,
-                    img=self.request.get('img'),
+                    img=img,
                     timestamp=datetime.datetime.now(),
                     event=event_key)
         post.put()
@@ -213,12 +200,6 @@ class AboutHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('about.html')
         profile = get_logged_in_user()
-        '''
-        user = users.get_current_user()
-        user_email = user.email()
-        profiles = Profile.query( user_email == Profile.email ).fetch()
-        profile = profiles[0]
-        '''
         logout = users.create_logout_url('/')
         variables = {'profile': profile, 'logout': logout }
         self.response.write(template.render(variables))
