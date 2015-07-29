@@ -37,7 +37,9 @@
     {% for post in posts %}
       <section>
         <h2>{{post.title}}</h2>
-        <img src="/img?post_id={{post.key.urlsafe()}}"></img>
+        {% if post.img %}
+          <img src="/img?post_id={{post.key.urlsafe()}}"></img>
+        {% endif %}
         <p>{{post.content}}</p>
         <h3>{{post.timestamp}}</h3>
       </section>
