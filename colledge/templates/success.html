@@ -1,19 +1,26 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="static/maintemplate.css">
+    <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
     <title></title>
-    <link href="static/main.css" rel="stylesheet" type="text.css">
   </head>
   <body>
-    <header>
-      <h1 id=main>about | COLLedge</h1>
-      <div id="menu">
-        <ul>
-          <li><a href="/school">My School</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/about">About</a></li>
-        </div>
-    </header>
 
+    <img src="static/colledge_logo.png">
+    <div id="menu">
+
+            <ul>
+
+              <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
+              <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
+              <li><a href={{logout}} id="image3"><img src="static/logout_icon.png"></a></li>
+
+            </ul>
+    </div>
+
+    <div id="successtext">
       <section>
         <h4>Thank you {{profile.first_name}}, your account was successfully created!</h4>
         <p>Start finding posts from your school <a href="/school">here.</a></p>

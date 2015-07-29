@@ -12,6 +12,9 @@ img { /* Colledge logo in the top left corner*/
   height: auto;
 }
 
+
+
+
 #menu { /* Menu bar with "My School" and "My Profile" */
 
     width: 100%;
@@ -135,7 +138,7 @@ section {
   text-decoration: none;
 }
 
-#schoolnameandevent h1  {
+#schoolnameandevent h2  {
   font-family: 'Graduate', cursive;
   color: #266275;
   text-decoration: none;
@@ -148,6 +151,32 @@ section {
   text-decoration: none;
   text-align: center;
 }
+
+
+#successtext h4  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  margin-top: -10px;
+}
+
+
+#successtext p  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  margin-top: -10px;
+}
+
+#schoolnameandevent h1  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  margin-top: -10px;
+}
+
+
+
 
 
 
@@ -184,13 +213,15 @@ section {
   margin-top: -10px;
   margin-left: 570px;
 }
+
 #image3 img {
-  width: 52px;
+  width: 60px;
   height: auto;
   position: absolute;
   margin-top: -11px;
   margin-left: 690px;
 }
+
 
 
 

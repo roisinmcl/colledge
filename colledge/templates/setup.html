@@ -1,18 +1,27 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Account</title>
-    <link href="static/main.css" rel="stylesheet" type="text.css">
+      <link rel="stylesheet" href="static/maintemplate.css">
+      <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+      <meta charset="utf-8">
+      <title>Account Setup</title>
   </head>
   <body>
-    <header>
-      <h1 id=main>create an account | COLLedge</h1>
+      <img src="static/colledge_logo.png">
+
       <div id="menu">
-        <ul>
-          <li><a href="/school">My School</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/about">About</a></li>
-        </div>
-    </header>
+
+              <ul>
+
+                <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
+                <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
+                <li><a href={{logout}} id="image3"><img src="static/logout_icon.png"></a></li>
+
+              </ul>
+    </div>
+
+    <br>
+
     <section>
     <form method="post" action="">
         <p>First Name: <input type="text" name="first_name" /><p>
