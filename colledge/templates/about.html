@@ -1,22 +1,45 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>About</title>
-    <link href="static/main.css" rel="stylesheet" type="text.css">
+    <link rel="stylesheet" href="static/maintemplate.css">
+    <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <title> About </title>
   </head>
   <body>
-    <header>
-      <h1 id=main>about | COLLedge</h1>
-      <div id="menu">
-        <ul>
-          <li><a href="/school">My School</a></li>
-          <li><a href="/profile?key={{urlsafe_key}}">Profile</a></li>
-          <li><a href="/about">About</a></li>
-        </div>
-    </header>
 
-      <section>
-        <h4>About the authors</h4>
+    <img src="static/colledge_logo.png">
+    <div id="menu">
+
+            <ul>
+
+              <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
+              <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
+              <li><a href={{logout}} id="image3"><img src="static/logout_icon.png"></a></li>
+
+            </ul>
+
+
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+
+    <div id="aboutauthors">
+    <section>
+        <h2>About the authors</h2>
         <p>Created using Google AppEngine.</p>
-      </section>
+    </section>
+    <br>
+    <br>
+
+    <div id="contactus">
+    <section>
+        <h2>Contact Us</h2>
+        <p>Roisin, Casey, Gibran</p>
+    </section>
+
   </body>
 </html>

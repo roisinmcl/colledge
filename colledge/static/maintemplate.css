@@ -126,7 +126,7 @@ section {
   text-align: center;
 }
 
-#createvent p  {
+#createvent h3  {
   font-family: 'Graduate', cursive;
   color: #266275;
   text-align: center;
@@ -137,6 +137,13 @@ section {
   color: #266275;
   text-decoration: none;
 }
+
+
+#eventposts a:hover {
+    color: #F90;
+    background-color: #FFF;
+}
+
 
 #schoolnameandevent h2  {
   font-family: 'Graduate', cursive;
@@ -179,7 +186,6 @@ section {
 
 
 
-
 #setup_form {
   font-family: 'Graduate', cursive;
   color: #266275;
@@ -215,12 +221,43 @@ section {
 }
 
 #image3 img {
-  width: 60px;
+  width: 52px;
   height: auto;
   position: absolute;
   margin-top: -11px;
   margin-left: 690px;
 }
+
+
+
+#aboutauthors h2 {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+#aboutauthors p {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+#contactus p {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+#contactus h2 {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
 
 
 
