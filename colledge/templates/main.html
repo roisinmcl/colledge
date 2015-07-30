@@ -39,12 +39,18 @@
     <br>
     <center> <h1> {{profile.school.get().name}}'s Events <h1> </center>
     {% for event in events %}
+
     <div id="eventposts">
-      <section>
-      <center> <a href='/event?key={{event.key.urlsafe()}}'>{{event.name}} </a> </center>
-      </section>
+        <center>
+           <section>
+     <a href='/event?key={{event.key.urlsafe()}}'>{{event.name}} </a>
+          </section>
+     </center>
+
+    </div>
 
     {% endfor %}
+
 
     <br>
     <br>
