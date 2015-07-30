@@ -52,6 +52,12 @@ class Post(ndb.Model):
     event = ndb.KeyProperty(kind=Event)
     profile = ndb.KeyProperty(kind=Profile)
 
+class Comment(ndb.Model):
+    content = ndb.StringProperty(required=True)
+    profile = ndb.KeyProperty(kind=Profile)
+    post = ndb.KeyProperty(kind=Post)
+    timestamp = ndb.DateTimeProperty(required=True)
+
 #navigate to a page to create a profile when they log in for the first time
 
 class LoginHandler(webapp2.RequestHandler):
@@ -229,6 +235,30 @@ class OtherProfileHander(webapp2.RequestHandler):
         variables = {'profile': profile}
         self.response.write(template.render(variables))
 
+class CommentHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('comment.html')
+        key = self.request.get('key')
+        #self.response.write(key)
+        post_key = ndb.Key(urlsafe=key)
+        post = post_key.get()
+        comments = Comment.query(Comment.post == post.key).fetch()
+        comments.sort(key=lambda x: x.timestamp)
+        variables = {'post': post, 'comments': comments }
+        self.response.write(template.render(variables))
+
+
+    def post(self):
+        urlsafe_post = self.request.get('key')
+        post_key = ndb.Key(urlsafe=urlsafe_post)
+        post = post_key.get()
+        profile = get_logged_in_user()
+        content = self.request.get('content')
+        comment = Comment(content=content, profile=profile.key,
+                          post=post.key, timestamp=datetime.datetime.now())
+        comment.put()
+        self.redirect("/comment?key=%s" %urlsafe_post )
+
 app = webapp2.WSGIApplication([
     ('/', LoginHandler), #login page
     ('/school', SchoolHandler), #school feed, "school.html"
@@ -238,6 +268,7 @@ app = webapp2.WSGIApplication([
     ('/success', SuccessHandler), #you have successfully created your account
     ('/event', EventHandler), #your account was successfully created, "profile.html"
     ('/img', ImageHandler),
-    ('/otherprofile', OtherProfileHander)
+    ('/otherprofile', OtherProfileHander),
+    ('/comment', CommentHandler)
 
 ], debug=True)
