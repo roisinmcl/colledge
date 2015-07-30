@@ -244,7 +244,7 @@ class CommentHandler(webapp2.RequestHandler):
         post = post_key.get()
         comments = Comment.query(Comment.post == post.key).fetch()
         comments.sort(key=lambda x: x.timestamp)
-        variables = {'post': post, 'comments': comments }
+        variables = {'post': post, 'comments': comments}
         self.response.write(template.render(variables))
 
 
