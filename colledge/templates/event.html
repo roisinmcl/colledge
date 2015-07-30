@@ -39,8 +39,7 @@
     {% for post in posts %}
       <div id = "container">
         <div class = "content">
-          <h4>{{post.profile.get().first_name}} {{post.profile.get().last_name}}</h4>
-          {{post.profile.get().img}}
+          <h4><a href="/otherprofile?key={{post.profile.urlsafe()}}"> {{post.profile.get().first_name}} {{post.profile.get().last_name}}</a></h4>
           <h2>{{post.title}}</h2>
           {% if post.img %}
             <img src="/img?post_id={{post.key.urlsafe()}}"></img>
