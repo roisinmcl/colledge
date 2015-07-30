@@ -23,23 +23,25 @@
                 </ul>
       </div>
 
-  <div id="schoolname"> <h1> {{profile.school.get().name}}</h1> </div>
+  <div id="schoolname"> <h1> {{profile.school.get().name}} | Events</h1> </div>
 
 
     <section>
 
-    <div id="createvent"> <h3> Create an event for the {{profile.school.get().name}} community!</h3> </div>
+    <div id="createvent"> <h3> Create a new event for the {{profile.school.get().name}} community!</h3> </div>
 
-      <form method="POST" action="">
+      <center><form method="POST" action="">
         <p> Event Title: <input type="text" name="title" /><p>
-      <input type="submit" />
+      <input type="submit" /> </center>
 
     </section>
-
+    <br>
+    <br>
+    <center> <h1> {{profile.school.get().name}}'s Events <h1> </center>
     {% for event in events %}
     <div id="eventposts">
       <section>
-      <a href='/event?key={{event.key.urlsafe()}}'>{{event.name}} </a>
+      <center> <a href='/event?key={{event.key.urlsafe()}}'>{{event.name}} </a> </center>
       </section>
 
     {% endfor %}
