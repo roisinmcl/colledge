@@ -196,7 +196,12 @@ class ProfileHandler(webapp2.RequestHandler):
         #profile = profiles[0]
         variables = {'profile': profile, 'logout':logout }
         self.response.write(template.render(variables))
-
+    def post(self):
+        profile = get_logged_in_user()
+        profile.name = "User name"
+        profile.img = self.request.get('img')
+        profile.put()
+        self.redirect('/profile')
 
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
