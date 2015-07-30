@@ -1,0 +1,458 @@
+body {
+  margin:auto;
+  background-image: url("http://media.eatsleepedm.com/wp-content/uploads/2012/10/Pappern-14.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1{
+font-family: 'Graduate', cursive;
+color: #266275;
+}
+
+#menu { /* Menu bar with "My School" and "My Profile" */
+
+    width: 100%;
+    height: 80px;
+    font-size: 20px;
+    font-family: 'Graduate', cursive;
+    text-align: center;
+    background-color: #266275;
+
+}
+
+#menu ul {
+  margin: 0px;
+  padding: 0px:
+
+
+}
+
+#menu li {
+  display: inline;
+
+}
+
+
+#logo { /* Colledge logo in the top*/
+  width: 220px;
+  height: auto;
+  margin-left:290px;
+
+}
+
+#logo2 { /* Colledge logo in the top*/
+  width: 220px;
+  height: auto;
+  margin-left:0px;
+
+}
+
+#image img {
+  width: 50px;
+  height: auto;
+  float: right; margin: 17px 0px 15px 15px;
+
+}
+
+#image2 img {
+  width: 50px;
+  height: auto;
+  float: right; margin: 24px 3px 15px 15px;
+}
+
+#image3 img {
+  width: 45px;
+  height: auto;
+  float: right; margin: 24px 15px 15px 15px;
+}
+#menu a {
+    text-decoration: none;
+    color: #FFFFFF;
+    margin: 20px
+}
+
+#menu a:hover {
+    color: #F90;
+}
+
+
+
+#about a {
+    font-family: 'Graduate', cursive;
+    color: #266275;
+    text-align: center;
+    text-decoration: none
+
+
+}
+
+
+section {
+  margin-top: 0px;
+  margin-bottom: auto;
+  margin-right:auto;
+  margin-left:auto;
+  background-color:transparent;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
+  width:600px;
+  position:relative;
+  border-style: inset;
+  border-radius: 5px;
+  border-width: thin;
+  border-color:#266275 ;
+  box-shadow: 0px 0px 30px #222;
+
+}
+
+#section2 {
+  margin-top: 30px;
+  margin-bottom: auto;
+  margin-right:auto;
+  margin-left:auto;
+  background-color:transparent;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
+  width:500px;
+  position:relative;
+  border-style: inset;
+  border-radius: 5px;
+  border-width: thin;
+  border-color:#266275 ;
+  box-shadow: 0px 0px 30px #222;
+
+}
+
+
+
+
+
+
+
+
+/*section {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-right:auto;
+  margin-left:auto;
+  font-family: cambria;
+  background-color: white;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
+  width:500px;
+  position:relative;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: thick;
+  border-color:#266275 ;
+  box-shadow: 7px 7px 7px #222;
+
+}
+*/
+
+#container h4 {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+}
+
+#container {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right:auto;
+  margin-left:auto;
+  background-color:transparent;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
+  width:500px;
+  position:relative;
+  border-style: inset;
+  border-radius: 5px;
+  border-width: thin;
+  border-color:#266275 ;
+  box-shadow: 0px 0px 30px #222;
+}
+
+
+
+#container img {
+max-width: 500px;
+width:auto;
+float: none;
+position: relative;
+left:10%;
+right:10%;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+.content{
+  font-family:georgia;
+}
+
+
+
+
+#posts p  {
+  font-family: 'Unna', serif;
+  color: #266275;
+
+}
+#main h1  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  position: absolute;
+  margin-left: 553px;
+}
+
+#main2 h1  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#main3 p  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+}
+
+#main4 h2  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  margin-top: -10px;
+}
+
+
+#schoolname h1  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+}
+
+#createvent h3  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+}
+
+#eventposts a  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  margin-top: 30px;
+}
+
+
+#eventposts section  {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-right:auto;
+  margin-left:auto;
+  background-color: transparent;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
+  width:450px;
+  position:relative;
+  border-style: inset;
+  border-radius: 3px;
+  border-width: thin;
+  border-color:#266275 ;
+  box-shadow: 2px 2px 50px #222;
+}
+
+
+
+
+
+
+#eventposts section:a {
+    color: #F90;
+    background-color: transparent;
+}
+
+
+
+
+#schoolnameandevent h2  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+#shareapost h2  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+#successtext h4  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  margin-top: -10px;
+}
+
+
+#successtext p  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  margin-top: -10px;
+}
+
+#schoolnameandevent h1  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  margin-top: -10px;
+}
+
+
+
+
+
+#setup_form {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+
+}
+
+
+#submit_button {
+  margin-left: 10px;
+
+}
+
+#select_school {
+  color: #266275;
+
+}
+
+
+
+
+#aboutauthors h2 {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+#aboutauthors p {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+#contactus p {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+#contactus h2 {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-decoration: none;
+  text-align: center;
+}
+
+.circular {
+	/*background: url("https://www.tinkercad.com/images/ftXsoTZIjVq/t200.jpg?t=0") no-repeat;*/
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
+	}
+
+.circular img {
+	opacity: 1;
+	filter: alpha(opacity=0);
+	width: 150px;
+	height: 150px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	}
+
+  #profileimg img {
+  	opacity: 1;
+  	filter: alpha(opacity=0);
+  	width: 150px;
+  	height: 150px;
+  	border-radius: 150px;
+  	-webkit-border-radius: 150px;
+  	-moz-border-radius: 150px;
+  	}
+
+
+
+    #content a {
+      font-family: 'Graduate', cursive;
+      color: #266275;
+      text-decoration: none;
+      text-align: center;
+
+    }
+
+    #content a:hover {
+      color: #F90;
+      background-color: transparent;
+
+    }
+    #content h4 {
+      font-family: 'Graduate', cursive;
+      font-size: 14px;
+      color: #266275;
+      text-decoration: none;
+      text-align: left;
+
+    }
+
+
+    #content h2 {
+      font-family: 'Graduate', cursive;
+      color: #266275;
+      text-decoration: none;
+      text-align: center;
+      margin-top: -15px;
+
+    }
+
+
+    #content p {
+      font-family: 'Graduate', cursive;
+      font-size: 17px;
+      color: #266275;
+      text-decoration: none;
+      text-align: center;
+
+    }
+
+    #content h3 {
+      font-family: 'Graduate', cursive;
+      color: #266275;
+      text-decoration: none;
+      font-size: 10px;
+      text-align: center;
+
+    }
