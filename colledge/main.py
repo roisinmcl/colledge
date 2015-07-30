@@ -219,6 +219,16 @@ class ImageHandler(webapp2.RequestHandler):
         post_model = post_id_key.get()
         self.response.write(post_model.img)
 
+class OtherProfileHander(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('otherprofile.html')
+        key = self.request.get('key')
+        #self.response.write(key)
+        profile_key = ndb.Key(urlsafe=key)
+        profile = profile_key.get()
+        variables = {'profile': profile}
+        self.response.write(template.render(variables))
+
 app = webapp2.WSGIApplication([
     ('/', LoginHandler), #login page
     ('/school', SchoolHandler), #school feed, "school.html"
@@ -227,6 +237,7 @@ app = webapp2.WSGIApplication([
     ('/setup', SetupHandler), #set up your accout, "setup.html"
     ('/success', SuccessHandler), #you have successfully created your account
     ('/event', EventHandler), #your account was successfully created, "profile.html"
-    ('/img', ImageHandler)
+    ('/img', ImageHandler),
+    ('/otherprofile', OtherProfileHander)
 
 ], debug=True)

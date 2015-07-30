@@ -1,0 +1,52 @@
+<html>
+        <head>
+          <title>Profile</title>
+          <link href="static/maintemplate.css" rel="stylesheet" type="text/css">
+          <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+        </head>
+
+        <body>
+
+            <div id="menu">
+
+                    <ul>
+                      <li> <img  id="logo" src="static/colledge_logo.png"> </li>
+                      <li><a href={{logout}} id="image3"><img src="static/logout_icon.png"></a></li>
+                      <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
+                      <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
+
+
+
+
+
+                    </ul>
+          </div>
+
+          <br>
+
+        <center><div class="circular"><img src="/img?post_id={{profile.key.urlsafe()}}" alt=" "/></div></center>
+
+
+          <div id="main2"> <h1> {{profile.first_name}} {{profile.last_name}} </h1> </div>
+          <div id="main4"> <h2>{{profile.school.get().name}}</h2> </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+             <div id="about"> <a href="/about" id="image2"> <footer> About </footer> </a>
+             </div>
+
+
+
+        </body>
+      </html>
+      <!-- need to edit so it displays by keys instead of current user. ALso get rid of upload fields  -->
