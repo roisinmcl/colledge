@@ -42,6 +42,7 @@ class Profile(ndb.Model):
    first_name = ndb.StringProperty(required=True)
    last_name = ndb.StringProperty(required=True)
    school = ndb.KeyProperty(kind=College)
+   img = ndb.BlobProperty()
 
 class Post(ndb.Model):
     title = ndb.StringProperty(required=True)

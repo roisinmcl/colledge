@@ -39,9 +39,9 @@
     {% for post in posts %}
       <div id = "container">
         <div class = "content">
-          <h2>{{post.title}}</h2>
           <h4>{{post.profile.get().first_name}} {{post.profile.get().last_name}}</h4>
-          <p>Poster's profile pic will go here</p>
+          <h2>{{post.title}}</h2>
+          <p></p>
           {% if post.img %}
             <img src="/img?post_id={{post.key.urlsafe()}}"></img>
           {% endif %}

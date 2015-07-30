@@ -308,3 +308,13 @@ section {
 	-webkit-border-radius: 150px;
 	-moz-border-radius: 150px;
 	}
+
+  #profileimg img {
+  	opacity: 1;
+  	filter: alpha(opacity=0);
+  	width: 150px;
+  	height: 150px;
+  	border-radius: 150px;
+  	-webkit-border-radius: 150px;
+  	-moz-border-radius: 150px;
+  	}
