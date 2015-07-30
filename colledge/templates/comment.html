@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title> <!-- this is a comment -->
+    <link href="static/maintemplate.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+        <div id="menu">
+
+                <ul>
+                  <li> <img  id="logo" src="static/colledge_logo.png"> </li>
+                  <li><a href="{{logout}}" id="image3"><img src="static/logout_icon.png"></a></li>
+                  <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
+                  <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
+
+
+
+
+
+                </ul>
+      </div>
+<br>
+    <div id="schoolnameandevent"> <h1> {{post.title}} | {{post.profile.get().name}} </h1> </div>
+    <section>
+        <div class = "content">
+          <h4><a href="/otherprofile?key={{post.profile.urlsafe()}}"> {{post.profile.get().first_name}} {{post.profile.get().last_name}}</a></h4>
+          <h2>{{post.title}}</h2>
+          {% if post.img %}
+            <img src="/img?post_id={{post.key.urlsafe()}}"></img>
+          {% endif %}
+          <p>{{post.content}}</p>
+          <h3>{{post.timestamp}}</h3>
+        </div>
+  </section>
+  {% for comment in comments %}
+    <section>
+      <h3>{{comment.profile.get().first_name}} {{comment.profile.get().last_name}}:</h3>
+      <p>{{comment.content}}</p>
+      <p>{{comment.timestamp}}</p>
+    </section>
+  {% endfor %}
+  <section>
+    <form method="POST" action="/comment?key={{post.key.urlsafe()}}" enctype="multipart/form-data">
+    <p>Comment: <br><textarea name="content" rows=5, cols=80></textarea></p>
+    <br>
+    <input type="submit" />
+
+  </section>
+  </body>
+</html>
