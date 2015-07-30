@@ -24,14 +24,20 @@
 
           <br>
 
-        <div class="circular"><img src="https://www.tinkercad.com/images/ftXsoTZIjVq/t200.jpg?t=0" alt=" "/></div>
+        <center><div class="circular"><img src="/img?post_id={{profile.key.urlsafe()}}" alt=" "/></div></center>
 
-        <br>
 
           <div id="main2"> <h1> {{profile.first_name}} {{profile.last_name}} </h1> </div>
           <div id="main4"> <h2>{{profile.school.get().name}}</h2> </div>
 
-          <div id="main3"> <section> <p>Profile Qualities go here</p></section>
+          <div id="main3"> <section> <p>Change Profile Picture:</p>
+
+          <form method="POST" action="/profile" enctype="multipart/form-data">
+          <div>UPload: <input type="file" name="img"></div>
+          <br>
+          <input type="submit" />
+        </section>
+          </div>
 
 <br>
 <br>
