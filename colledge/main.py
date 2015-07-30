@@ -37,19 +37,21 @@ class Event(ndb.Model):
    name = ndb.StringProperty(required=True)
    school = ndb.KeyProperty(kind=College)
 
+class Profile(ndb.Model):
+   email = ndb.StringProperty(required=True)
+   first_name = ndb.StringProperty(required=True)
+   last_name = ndb.StringProperty(required=True)
+   school = ndb.KeyProperty(kind=College)
+
 class Post(ndb.Model):
     title = ndb.StringProperty(required=True)
     content = ndb.TextProperty(required=True)
     img = ndb.BlobProperty()
     timestamp = ndb.DateTimeProperty(required=True)
     event = ndb.KeyProperty(kind=Event)
+    profile = ndb.KeyProperty(kind=Profile)
 
 #navigate to a page to create a profile when they log in for the first time
-class Profile(ndb.Model):
-    email = ndb.StringProperty(required=True)
-    first_name = ndb.StringProperty(required=True)
-    last_name = ndb.StringProperty(required=True)
-    school = ndb.KeyProperty(kind=College)
 
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
@@ -122,7 +124,7 @@ class EventHandler(webapp2.RequestHandler):
                     content=content,
                     img=img,
                     timestamp=datetime.datetime.now(),
-                    event=event_key)
+                    event=event_key, profile=profile.key)
         post.put()
         return self.redirect("/event?key=%s" %key)
 
