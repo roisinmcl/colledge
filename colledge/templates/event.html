@@ -28,7 +28,7 @@
       <div id="shareapost"> <h2> Create a post about the {{event.name}}! </h2> </div>
       <form method="POST" action="/event?key={{event.key.urlsafe()}}" enctype="multipart/form-data">
       <p>Title: <input type="text" name="title" /><p>
-      <p>Post: <br><textarea name="content" rows=5, cols=60></textarea></p>
+      <p>Post: <br><textarea name="content" rows=5, cols=80></textarea></p>
       <div>Image: <input type="file" name="img"></div>
       <br>
       <!--<p>Name: (optional): <input type="text" name="name" /></p>
@@ -38,6 +38,7 @@
     </section>
     {% for post in posts %}
       <div id = "container">
+        <h4>{{post.profile.get().first_name}} {{post.profile.get().last_name}}</h4>
         <div class = "content">
           <h4><a href="/otherprofile?key={{post.profile.urlsafe()}}"> {{post.profile.get().first_name}} {{post.profile.get().last_name}}</a></h4>
           <h2>{{post.title}}</h2>
