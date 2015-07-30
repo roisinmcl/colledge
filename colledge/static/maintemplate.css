@@ -1,18 +1,9 @@
 body {
   margin:auto;
   background-image: url("http://media.eatsleepedm.com/wp-content/uploads/2012/10/Pappern-14.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-
-img { /* Colledge logo in the top left corner*/
-  position: absolute;
-  margin-top: -13px;
-  margin-left: 600px;
-  width: 250px;
-  height: auto;
-}
-
-
 
 
 #menu { /* Menu bar with "My School" and "My Profile" */
@@ -22,16 +13,12 @@ img { /* Colledge logo in the top left corner*/
     font-size: 20px;
     font-family: 'Graduate', cursive;
     text-align: center;
-    text-transform: uppercase;
     background-color: #266275;
-    text-align: center;
-    align-items: center;
+
 }
 
 #menu ul {
-  position: absolute;
-  margin-top:28px;
-  margin-left: 530px
+
 
 }
 
@@ -40,6 +27,32 @@ img { /* Colledge logo in the top left corner*/
 
 }
 
+
+#logo { /* Colledge logo in the top*/
+  width: 220px;
+  height: auto;
+  margin-left:290px;
+
+}
+
+#image img {
+  width: 50px;
+  height: auto;
+  float: right; margin: 17px 0px 15px 15px;
+
+}
+
+#image2 img {
+  width: 50px;
+  height: auto;
+  float: right; margin: 24px 3px 15px 15px;
+}
+
+#image3 img {
+  width: 45px;
+  height: auto;
+  float: right; margin: 24px 15px 15px 15px;
+}
 #menu a {
     text-decoration: none;
     color: #FFFFFF;
@@ -241,30 +254,6 @@ section {
 
 }
 
-
-#image img {
-  width: 60px;
-  height: auto;
-  position: absolute;
-  margin-top: -18px;
-  margin-left: 690px;
-}
-
-#image2 img {
-  width: 60px;
-  height: auto;
-  position: absolute;
-  margin-top: -10px;
-  margin-left: 570px;
-}
-
-#image3 img {
-  width: 52px;
-  height: auto;
-  position: absolute;
-  margin-top: -11px;
-  margin-left: 690px;
-}
 
 
 
