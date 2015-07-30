@@ -6,6 +6,7 @@ body {
 }
 
 
+
 #menu { /* Menu bar with "My School" and "My Profile" */
 
     width: 100%;
@@ -34,6 +35,13 @@ body {
   width: 220px;
   height: auto;
   margin-left:290px;
+
+}
+
+#logo2 { /* Colledge logo in the top*/
+  width: 220px;
+  height: auto;
+  margin-left:0px;
 
 }
 
