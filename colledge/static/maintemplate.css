@@ -292,21 +292,19 @@ section {
   text-align: center;
 }
 
-
-
-
 .circular {
+	/*background: url("https://www.tinkercad.com/images/ftXsoTZIjVq/t200.jpg?t=0") no-repeat;*/
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
+	}
+
+.circular img {
+	opacity: 1;
+	filter: alpha(opacity=0);
 	width: 150px;
 	height: 150px;
 	border-radius: 150px;
 	-webkit-border-radius: 150px;
 	-moz-border-radius: 150px;
-	background: url("https://www.tinkercad.com/images/ftXsoTZIjVq/t200.jpg?t=0") no-repeat;
-  position: absolute;
-  margin-left: 643px;
-	}
-
-.circular img {
-	opacity: 0;
-	filter: alpha(opacity=0);
 	}
