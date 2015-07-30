@@ -143,7 +143,7 @@ class SetupHandler(webapp2.RequestHandler):
         georgetown.put()
         ucsc = College(name="UCSC", id="ucsc")
         ucsc.put()
-        ucberkeley = College(name="UC Berkley", id='ucberkeley')
+        ucberkeley = College(name="UC Berkeley", id='ucberkeley')
         ucberkeley.put()
 
         user = users.get_current_user()
