@@ -98,6 +98,26 @@ section {
   padding-left: 15px;
   padding-bottom: 15px;
   padding: 15px;
+  width:600px;
+  position:relative;
+  border-style: inset;
+  border-radius: 5px;
+  border-width: thin;
+  border-color:#266275 ;
+  box-shadow: 0px 0px 30px #222;
+
+}
+
+#section2 {
+  margin-top: 30px;
+  margin-bottom: auto;
+  margin-right:auto;
+  margin-left:auto;
+  background-color:transparent;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
   width:500px;
   position:relative;
   border-style: inset;
@@ -107,6 +127,9 @@ section {
   box-shadow: 0px 0px 30px #222;
 
 }
+
+
+
 
 
 
@@ -158,6 +181,20 @@ section {
   border-color:#266275 ;
   box-shadow: 0px 0px 30px #222;
 }
+
+
+
+#container img {
+max-width: 500px;
+width:auto;
+float: none;
+position: relative;
+left:10%;
+right:10%;
+margin-left: auto;
+margin-right: auto;
+}
+
 
 .content{
   font-family:georgia;
@@ -391,6 +428,7 @@ section {
       color: #266275;
       text-decoration: none;
       text-align: center;
+      margin-top: -15px;
 
     }
 
