@@ -143,8 +143,8 @@ class SetupHandler(webapp2.RequestHandler):
         georgetown.put()
         ucsc = College(name="UCSC", id="ucsc")
         ucsc.put()
-        ucberkley = College(name="UC Berkley", id='ucberkley')
-        ucberkley.put()
+        ucberkeley = College(name="UC Berkley", id='ucberkeley')
+        ucberkeley.put()
 
         user = users.get_current_user()
         first_name = self.request.get('first_name')
@@ -156,7 +156,7 @@ class SetupHandler(webapp2.RequestHandler):
         elif school == 'ucsc':
             college = ndb.Key(College, "ucsc")
         else:
-            college = ndb.Key(College, "ucberkley")
+            college = ndb.Key(College, "ucberkeley")
         profile = Profile(email=email, first_name=first_name,
                           last_name=last_name, school=college)
         profile.put()
