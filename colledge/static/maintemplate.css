@@ -89,7 +89,7 @@ color: #266275;
 
 
 section {
-  margin-top: auto;
+  margin-top: 30px;
   margin-bottom: auto;
   margin-right:auto;
   margin-left:auto;
@@ -98,7 +98,7 @@ section {
   padding-left: 15px;
   padding-bottom: 15px;
   padding: 15px;
-  width:700px;
+  width:500px;
   position:relative;
   border-style: inset;
   border-radius: 5px;
@@ -107,6 +107,8 @@ section {
   box-shadow: 0px 0px 30px #222;
 
 }
+
+
 
 
 
@@ -132,34 +134,29 @@ section {
 }
 */
 
-#container{
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-right:auto;
-  margin-left:auto;
-  background-color: white;
-  padding: 15px;
-  width:500px;
-  height:auto;
-  position:relative;
-  float:none;
-  overflow:hidden;
-  border-style: solid;
-  border-radius: 10px;
-  border-width: thick;
-  border-color:#266275 ;
-  box-shadow: 7px 7px 7px #222;
+#container h4 {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
 }
 
-#container img{
-  max-width:500px;
-  width:auto;
-  float:none;
-  position:relative;
-  left:10%;
-  right:10%;
-  margin-left:auto;
+#container {
+  margin-top: auto;
+  margin-bottom: auto;
   margin-right:auto;
+  margin-left:auto;
+  background-color:transparent;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding: 15px;
+  width:500px;
+  position:relative;
+  border-style: inset;
+  border-radius: 5px;
+  border-width: thin;
+  border-color:#266275 ;
+  box-shadow: 0px 0px 30px #222;
 }
 
 .content{
@@ -363,3 +360,55 @@ section {
   	-webkit-border-radius: 150px;
   	-moz-border-radius: 150px;
   	}
+
+
+
+    #content a {
+      font-family: 'Graduate', cursive;
+      color: #266275;
+      text-decoration: none;
+      text-align: center;
+
+    }
+
+    #content a:hover {
+      color: #F90;
+      background-color: transparent;
+
+    }
+    #content h4 {
+      font-family: 'Graduate', cursive;
+      font-size: 14px;
+      color: #266275;
+      text-decoration: none;
+      text-align: left;
+
+    }
+
+
+    #content h2 {
+      font-family: 'Graduate', cursive;
+      color: #266275;
+      text-decoration: none;
+      text-align: center;
+
+    }
+
+
+    #content p {
+      font-family: 'Graduate', cursive;
+      font-size: 17px;
+      color: #266275;
+      text-decoration: none;
+      text-align: center;
+
+    }
+
+    #content h3 {
+      font-family: 'Graduate', cursive;
+      color: #266275;
+      text-decoration: none;
+      font-size: 10px;
+      text-align: center;
+
+    }

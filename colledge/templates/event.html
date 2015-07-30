@@ -36,20 +36,40 @@
       <input type="submit" />
 
     </section>
-    {% for post in posts %}
-      <div id = "container">
-        <h4>{{post.profile.get().first_name}} {{post.profile.get().last_name}}</h4>
-        <div class = "content">
-          <h4><a href="/otherprofile?key={{post.profile.urlsafe()}}"> {{post.profile.get().first_name}} {{post.profile.get().last_name}}</a></h4>
-          <h2>{{post.title}}</h2>
-          {% if post.img %}
+
+<br>
+<br>
+  {% for post in posts %}
+
+    <section>
+
+
+
+  <div id= "content">
+    <h4>
+      <a href="/otherprofile?key={{post.profile.urlsafe()}}"> {{post.profile.get().first_name}} {{post.profile.get().last_name}}</a>
+    </h4>
+
+          <h2>
+            {{post.title}}
+          </h2>
+          <br>
+
+            {% if post.img %}
             <img src="/img?post_id={{post.key.urlsafe()}}"></img>
+
           {% endif %}
           <p>{{post.content}}</p>
+          <br>
+          <br>
           <h3>{{post.timestamp}}</h3>
-        </div>
+
       </div>
-    {% endfor %}
-  </section>
+
+
+    </section>
+      {% endfor %}
+
+
   </body>
 </html>
