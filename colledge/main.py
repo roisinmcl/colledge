@@ -155,6 +155,23 @@ class SetupHandler(webapp2.RequestHandler):
         ucsc.put()
         ucberkeley = College(name="UC Berkeley", id='ucberkeley')
         ucberkeley.put()
+        ucdavis = College(name="UC Davis", id='ucdavis')
+        ucdavis.put()
+        columbia = College(name="Columbia", id='columbia')
+        columbia.put()
+        stanford = College(name="Stanford", id='stanford')
+        stanford.put()
+        harvard = College(name="Harvard", id='harvard')
+        harvard.put()
+        sjsu = College(name="San Jose State Univeristy", id='sjsu')
+        sjsu.put()
+        scripps = College(name="Scripps College", id='scripps')
+        scripps.put()
+        calpoly = College(name="Caly Poly", id='calpoly')
+        calpoly.put()
+        usc = College(name="USC", id='usc')
+        usc.put()
+
 
         user = users.get_current_user()
         first_name = self.request.get('first_name')
@@ -165,8 +182,25 @@ class SetupHandler(webapp2.RequestHandler):
             college = ndb.Key(College, "georgetown")
         elif school == 'ucsc':
             college = ndb.Key(College, "ucsc")
+        elif school == 'ucdavis':
+            college = ndb.Key(College, "ucdavis")
+        elif school == 'columbia':
+            college = ndb.Key(College, "columbia")
+        elif school == 'stanford':
+            college = ndb.Key(College, "stanford")
+        elif school == 'harvard':
+            college = ndb.Key(College, "harvard")
+        elif school == 'sjsu':
+            college = ndb.Key(College, "sjsu")
+        elif school == 'scripps':
+            college = ndb.Key(College, "scripps")
+        elif school == 'calpoly':
+            college = ndb.Key(College, "calpoly")
+        elif school == 'usc':
+            college = ndb.Key(College, "usc")
         else:
             college = ndb.Key(College, "ucberkeley")
+
         profile = Profile(email=email, first_name=first_name,
                           last_name=last_name, school=college)
         profile.put()
