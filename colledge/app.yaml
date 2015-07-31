@@ -6,7 +6,7 @@ threadsafe: yes
 
 handlers:
 - url: /favicon\.ico
-  static_files: favicon.ico
+  static_files: static/colledge_icon.png
   upload: favicon\.ico
   login: required
 
