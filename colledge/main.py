@@ -43,6 +43,7 @@ class Profile(ndb.Model):
    last_name = ndb.StringProperty(required=True)
    school = ndb.KeyProperty(kind=College)
    img = ndb.BlobProperty()
+   bio = ndb.StringProperty()
 
 class Post(ndb.Model):
     title = ndb.StringProperty(required=True)
@@ -259,16 +260,27 @@ class CommentHandler(webapp2.RequestHandler):
         comment.put()
         self.redirect("/comment?key=%s" %urlsafe_post )
 
+
+class BioHandler(webapp2.RequestHandler):
+    def post(self):
+        profile = get_logged_in_user()
+        profile.bio = self.request.get('bio')
+        profile.put()
+        self.redirect('/profile')
+
+
+
 app = webapp2.WSGIApplication([
     ('/', LoginHandler), #login page
     ('/school', SchoolHandler), #school feed, "school.html"
-    ('/profile', ProfileHandler), #your profile, "profile.html"
+    ('/profile', ProfileHandler,), #your profile, "profile.html"
     ('/about', AboutHandler), #about the website, "about.html"
     ('/setup', SetupHandler), #set up your accout, "setup.html"
     ('/success', SuccessHandler), #you have successfully created your account
     ('/event', EventHandler), #your account was successfully created, "profile.html"
     ('/img', ImageHandler),
     ('/otherprofile', OtherProfileHander),
-    ('/comment', CommentHandler)
+    ('/comment', CommentHandler),
+    ('/bio', BioHandler)
 
 ], debug=True)

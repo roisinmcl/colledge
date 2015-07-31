@@ -11,7 +11,7 @@
 
                     <ul>
                       <li> <img  id="logo" src="static/colledge_logo.png"> </li>
-                      <li><a href="{{logout}}"" id="image3"><img src="static/logout_icon.png"></a></li>
+                      <li><a href="{{logout}}" id="image3"><img src="static/logout_icon.png"></a></li>
                       <li><a href="/school" id="image"><img src="static/school_icon.png"></a></li>
                       <li><a href="/profile" id="image2"><img src="static/student_icon.png"></a></li>
 
@@ -29,6 +29,17 @@
 
           <div id="main2"> <h1> {{profile.first_name}} {{profile.last_name}} </h1> </div>
           <div id="main4"> <h2>{{profile.school.get().name}}</h2> </div>
+
+        <div id="main5">
+
+          {% if profile.bio %}
+
+            <section>
+              <center> <h1> Bio: <h1> <center>
+          <p>  {{profile.bio}} </p>
+            </section>
+            {% endif %}
+          </div>
 
 
 <br>

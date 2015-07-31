@@ -232,6 +232,13 @@ display: block;
   text-align: center;
 }
 
+#main5 p  {
+  font-family: 'Graduate', cursive;
+  color: #266275;
+  text-align: center;
+  font-size: 17px;
+}
+
 #main4 h2  {
   font-family: 'Graduate', cursive;
   color: #266275;

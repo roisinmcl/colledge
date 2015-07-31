@@ -36,7 +36,23 @@
           <div>UPload: <input type="file" name="img"></div>
           <br>
           <input type="submit" />
+        </form>
         </section>
+        <div id="main4"> <section> <p>Add a Bio:</p>
+
+        <form method="POST" action="/bio" enctype="multipart/form-data">
+        <div>Type here <input type="text" name="bio"></div>
+        <br>
+        <input type="submit" />
+          </form>
+      </section>
+
+    {% if profile.bio %}
+      <section>
+      {{profile.bio}}
+      </section>
+      {% endif %}
+
           </div>
 
 <br>
