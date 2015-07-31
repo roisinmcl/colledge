@@ -29,7 +29,7 @@
       <form method="POST" action="/event?key={{event.key.urlsafe()}}" enctype="multipart/form-data">
       <p>Title: <input type="text" name="title" /><p>
       <p>Post: <br><textarea name="content" rows=5, cols=80></textarea></p>
-      <div>Image: <input type="file" name="img"></div>
+      <div> Image: <input type="file" name="img"></div>
       <br>
       <!--<p>Name: (optional): <input type="text" name="name" /></p>
       <p>Location (optional): <input type="text" name="loc" /></p>-->
@@ -57,7 +57,7 @@
           <br>
 
             {% if post.img %}
-            <img src="/img?post_id={{post.key.urlsafe()}}"></img>
+          <center>  <img id="imagee" src="/img?post_id={{post.key.urlsafe()}}"></img> <center>
 
           {% endif %}
           <p>{{post.content}}</p>

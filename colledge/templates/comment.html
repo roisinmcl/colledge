@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Colledge</title> <!-- this is a comment -->
-    <link href="static/maintemplate2.css" rel="stylesheet" type="text/css">
+    <link href="static/maintemplate.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
   </head>
   <body>
@@ -28,7 +28,7 @@
           <h4><a href="/otherprofile?key={{post.profile.urlsafe()}}"> {{post.profile.get().first_name}} {{post.profile.get().last_name}}</a></h4>
           <h2>{{post.title}}</h2>
           {% if post.img %}
-            <img src="/img?post_id={{post.key.urlsafe()}}"></img>
+          <center>  <img id="imaggee" src="/img?post_id={{post.key.urlsafe()}}"></img> </center>
           {% endif %}
           <p>{{post.content}}</p>
           <h3>{{post.timestamp}}</h3>
@@ -41,6 +41,7 @@
       <p>{{comment.timestamp}}</p>
     </section>
   {% endfor %}
+
   <section>
     <form method="POST" action="/comment?key={{post.key.urlsafe()}}" enctype="multipart/form-data">
     <p>Comment: <br><textarea name="content" rows=5, cols=80></textarea></p>
