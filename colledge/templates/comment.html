@@ -36,11 +36,15 @@
         </div>
   </section>
   {% for comment in comments %}
+
     <section>
-      <h3>{{comment.profile.get().first_name}} {{comment.profile.get().last_name}}:</h3>
+    <div id="comments2">
+      <h1>{{comment.profile.get().first_name}} {{comment.profile.get().last_name}}:</h1>
       <p>{{comment.content}}</p>
-      <p>{{comment.timestamp}}</p>
+      <h3>{{comment.timestamp}}</h3>
+      </div>
     </section>
+
   {% endfor %}
 
 
